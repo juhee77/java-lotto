@@ -4,6 +4,7 @@ package lotto.controller;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 import lotto.domain.User;
+import lotto.domain.WinningLotto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -20,6 +21,14 @@ public class LottoRunner {
     public void run() {
         User user = makeUser();
         outputView.printBoughtLotto(user);
+        WinningLotto winningLotto = makeWinningLotto();
+        System.out.println(winningLotto);
+    }
+
+    private WinningLotto makeWinningLotto() {
+        List<Integer> lotto = inputView.readLotto();
+        int bonusNumber = inputView.readBonusLotto();
+        return new WinningLotto(lotto, bonusNumber);
     }
 
     private User makeUser() {
@@ -32,7 +41,7 @@ public class LottoRunner {
         List<Lotto> lotto = new ArrayList<>();
         List<Integer> numbers;
         while (wantPieces-- > 0) {
-            numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(LOTTO_NUM_START, LOTTO_NUM_END,LOTTO_NUM_SIZE));
+            numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(LOTTO_NUM_START, LOTTO_NUM_END, LOTTO_NUM_SIZE));
             Collections.sort(numbers);
             lotto.add(new Lotto(numbers));
         }

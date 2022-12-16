@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 import lotto.domain.User;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,9 +15,11 @@ import static lotto.constants.Constants.*;
 
 public class LottoRunner {
     private static final InputView inputView = new InputView();
+    private static final OutputView outputView = new OutputView();
 
     public void run() {
         User user = makeUser();
+        outputView.printBoughtLotto(user);
     }
 
     private User makeUser() {

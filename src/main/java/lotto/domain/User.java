@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import lotto.domain.Lotto;
-
 import java.util.List;
 
 public class User {
@@ -11,5 +9,13 @@ public class User {
     public User(int lottoCount, List<Lotto> boughtLotto) {
         this.lottoCount = lottoCount;
         this.boughtLotto = boughtLotto;
+    }
+
+    public int getLottoCount() {
+        return lottoCount;
+    }
+
+    public List<Lotto> getBoughtLotto() {
+        return boughtLotto;
     }
 }

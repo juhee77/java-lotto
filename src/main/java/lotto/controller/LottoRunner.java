@@ -3,6 +3,7 @@ package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
+import lotto.domain.ScoreBoard;
 import lotto.domain.User;
 import lotto.domain.WinningLotto;
 import lotto.view.InputView;
@@ -22,7 +23,9 @@ public class LottoRunner {
         User user = makeUser();
         outputView.printBoughtLotto(user);
         WinningLotto winningLotto = makeWinningLotto();
-        System.out.println(winningLotto);
+        ScoreBoard scoreBoard = new ScoreBoard(user, winningLotto);
+        scoreBoard.calculateScore();
+        outputView.printScore(scoreBoard);
     }
 
     private WinningLotto makeWinningLotto() {
